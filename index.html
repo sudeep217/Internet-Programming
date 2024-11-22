@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReNewMarket</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background: #4caf50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        input, select, textarea, button {
+            margin-bottom: 20px;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            background: #4caf50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #333;
+            color: white;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .active {
+            display: block;
+        }
+
+        /* Loading animation */
+        .loading {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18px;
+            color: #4caf50;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>ReNewMarket</h1>
+        <p>Your one-stop shop for buying and selling secondhand goods.</p>
+    </header>
+
+    <!-- Starting Page -->
+    <main id="start" class="active">
+        <h2>Welcome!</h2>
+        <p>Are you a buyer or a seller?</p>
+        <div class="center">
+            <button onclick="showSection('buyer')">I am a Buyer</button>
+            <button onclick="showSection('seller')">I am a Seller</button>
+        </div>
+    </main>
+
+    <!-- Buyer Section -->
+    <main id="buyer">
+        <h2>Buyer Page</h2>
+        <form onsubmit="showThankYou(event, 'buyer')">
+            <label for="buyer-category">Category:</label>
+            <select id="buyer-category" name="category">
+                <option value="electronics">Electronics</option>
+                <option value="furniture">Furniture</option>
+                <option value="clothing">Clothing</option>
+                <option value="collectibles">Collectibles</option>
+            </select>
+
+            <label for="buyer-name">Your Name:</label>
+            <input type="text" id="buyer-name" name="name" required>
+
+            <label for="buyer-email">Email:</label>
+            <input type="email" id="buyer-email" name="email" required>
+
+            <label for="buyer-payment">Mode of Payment:</label>
+            <select id="buyer-payment" name="payment">
+                <option value="credit-card">Credit Card</option>
+                <option value="paypal">PayPal</option>
+                <option value="cash-on-delivery">Cash on Delivery</option>
+            </select>
+
+            <button type="submit">Place Order</button>
+        </form>
+    </main>
+
+    <!-- Seller Section -->
+    <main id="seller">
+        <h2>Seller Page</h2>
+        <form onsubmit="showThankYou(event, 'seller')">
+            <label for="product-name">Product Name:</label>
+            <input type="text" id="product-name" name="product_name" required>
+
+            <label for="category">Category:</label>
+            <select id="category" name="category">
+                <option value="electronics">Electronics</option>
+                <option value="furniture">Furniture</option>
+                <option value="clothing">Clothing</option>
+                <option value="collectibles">Collectibles</option>
+            </select>
+
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="5" required></textarea>
+
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" required>
+
+            <label for="contact">Contact Details:</label>
+            <input type="text" id="contact" name="contact" required>
+
+            <button type="submit">List Product</button>
+        </form>
+    </main>
+
+    <!-- Thank You Section -->
+    <main id="thankyou">
+        <h2>Thank You!</h2>
+        <p>Your action has been successfully completed.</p>
+        <form onsubmit="submitFeedback(event)">
+            <label for="feedback">We value your feedback:</label>
+            <textarea id="feedback" name="feedback" rows="5" placeholder="Share your thoughts..."></textarea>
+            <button type="submit">Submit Feedback</button>
+        </form>
+    </main>
+
+    <!-- Loading Animation -->
+    <div id="loading" class="loading">Redirecting to Home Page...</div>
+
+    <footer>
+        <p>&copy; 2024 ReNewMarket</p>
+    </footer>
+
+    <script>
+        // Function to show the selected section
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('main').forEach(section => section.classList.remove('active'));
+            // Show the selected section
+            document.getElementById(sectionId).classList.add('active');
+        }
+
+        // Function to handle Thank You page navigation
+        function showThankYou(event, userType) {
+            event.preventDefault();
+            alert(userType === 'buyer'
+                ? "Your order has been placed successfully!"
+                : "Your product has been listed successfully!");
+            showSection('thankyou');
+        }
+
+        // Function to handle feedback submission
+        function submitFeedback(event) {
+            event.preventDefault();
+            alert("Thank you for your valuable feedback!");
+
+            // Show loading animation
+            const loadingDiv = document.getElementById('loading');
+            loadingDiv.style.display = 'block';
+
+            // Simulate a delay before redirecting
+            setTimeout(() => {
+                loadingDiv.style.display = 'none';
+                showSection('start');
+            }, 3000); // 3 seconds
+        }
+    </script>
+</body>
+</html>

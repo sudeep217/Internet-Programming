@@ -1,0 +1,144 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+    font-family: 'Lobster', cursive;
+}
+
+header h1 {
+    margin: 0;
+}
+
+main {
+    padding: 2rem;
+}
+
+section {
+    margin-bottom: 2rem;
+    animation: fadeIn 1s ease-in-out;
+}
+
+form {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 1rem;
+    font-family: 'Open Sans', sans-serif;
+}
+
+form label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+form input, form select, form textarea, form button {
+    display: block;
+    margin-bottom: 1rem;
+    width: 100%;
+    padding: 0.5rem;
+}
+
+button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .product-list div {
+        width: calc(50% - 1rem);
+    }
+}
+
+@media (max-width: 480px) {
+    .product-list div {
+        width: calc(100% - 1rem);
+    }
+}
+/* Enhancements for vibrant look */
+body {
+    background: linear-gradient(to right, #f4f4f4, #e8f4f8);
+}
+
+header {
+    background-color: #00796b;
+    color: #e0f7fa;
+}
+
+form {
+    background: linear-gradient(to right, #ffffff, #e0f2f1);
+    border: 1px solid #004d40;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button {
+    background-color: #00796b;
+    color: #e0f7fa;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #004d40;
+}
+
+/* Additional professional enhancements */
+header {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+form label {
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    color: #00796b;
+}
+
+form input, form select, form textarea {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+}
+
+button {
+    font-weight: bold;
+    font-size: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 121, 107, 0.2);
+}
+
+footer p {
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 0.5px;
+}
